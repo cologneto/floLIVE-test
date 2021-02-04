@@ -1,5 +1,7 @@
 <div>
-  <div *ngFor="let suggestion of suggestions">
-    <img src="{{ suggestion }}" alt="">
-  </div>
+  <mat-grid-list cols="3" rowHeight="16.55vh">
+      <mat-grid-tile [rowspan]="1" [colspan]="1" *ngFor="let suggestion of suggestions">
+        <img src="{{ suggestion }}" class="tile-image">
+      </mat-grid-tile>
+  </mat-grid-list>
 </div>
