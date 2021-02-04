@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-main-right',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainRightComponent implements OnInit {
 
   constructor() { }
-
+  @Input() suggestions: Array<string>;
   ngOnInit(): void {
   }
 

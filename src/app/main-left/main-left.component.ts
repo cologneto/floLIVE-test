@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import Todo from '../models/todo.model';
 
 @Component({
   selector: 'app-main-left',
@@ -9,6 +10,7 @@ export class MainLeftComponent implements OnInit {
 
   constructor() { }
 
+  @Input() todos: Array<Todo>;
   ngOnInit(): void {
   }
 
