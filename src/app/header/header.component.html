@@ -1,3 +1,6 @@
-<div>
+<div *ngIf="firstName">
   <span>First Name: {{ firstName }}   Last Name: {{ lastName }}</span>
+</div>
+<div *ngIf="passwordNumber">
+  <span >Password: {{ passwordNumber }}   Avatar: {{ avatarUrl }}</span>
 </div>

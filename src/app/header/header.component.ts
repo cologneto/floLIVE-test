@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   @Input() firstName: string;
   @Input() lastName: string;
+  @Input() passwordNumber: string;
+  @Input() avatarUrl: string;
 
   ngOnInit(): void {
   }

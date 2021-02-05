@@ -1,4 +1,4 @@
-<mat-grid-list cols="6" rowHeight="16.55vh">
+<mat-grid-list cols="6" rowHeight="16.56vh" [style.background]="'black'" [style.color]="'white'">
   <mat-grid-tile
     [colspan]="1"
     [rowspan]="6">
@@ -6,29 +6,10 @@
   </mat-grid-tile>
   <mat-grid-tile
     [colspan]="5"
-    [rowspan]="1">
-    <app-header
-      [firstName]="customer.firstName"
-      [lastName]="customer.lastName"></app-header>
-  </mat-grid-tile>
-  <mat-grid-tile
-    [colspan]="2"
-    [rowspan]="4">
-    <app-main-left
-      [todos]="todos"></app-main-left>
-  </mat-grid-tile>
-
-  <mat-grid-tile
-    [colspan]="3"
-    [rowspan]="4">
-    <app-main-right
-      [suggestions]="suggestions" ></app-main-right>
-  </mat-grid-tile>
-  <mat-grid-tile
-    [colspan]="5"
-    [rowspan]="1">
-    <app-footer
-      [phoneNumber]="customer.phoneNumber"
-      [mail]="customer.mail"></app-footer>
+    [rowspan]="6">
+    <router-outlet>
+    </router-outlet>
+    <app-customer
+      [customer]="customer"></app-customer>
   </mat-grid-tile>
 </mat-grid-list>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Customer from './models/customer.model';
 import Todo from './models/todo.model';
+import Account from './models/account.model';
+import Transaction from './models/transaction.model';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +13,15 @@ export class AppComponent implements OnInit{
   title = 'flo-live-test';
 
   customer: Customer;
-  todos: Array<Todo>;
-  suggestions: Array<string>;
+  account: Account;
 
   ngOnInit(){
-    this.todos = [
+    const todos = [
       new Todo('Do breakfast', false),
       new Todo('Do jogging', false),
       new Todo('Work', false)
     ];
-    this.suggestions = [
+    const suggestions = [
       '../assets/images/1-bhutuan-pine-520x340.jpg',
       '../assets/images/download.jpg',
       '../assets/images/image2s.jpg',
@@ -34,6 +35,14 @@ export class AppComponent implements OnInit{
       '../assets/images/Vermont-520x340.jpg',
       '../assets/images/View-through-the-trees-onto-lake-near-Goslar-520x340.jpg'
     ];
-    this.customer = new Customer('Georgi', 'Tsanev', this.todos, this.suggestions,'+09841203948', 'cologneto@abv.bg');
+    const transactionHistory = [
+      new Transaction('EUR', 45.56, '09-21-2009'),
+      new Transaction('EUR', 45.56, '09-21-2009'),
+      new Transaction('EUR', 45.56, '09-21-2009'),
+      new Transaction('EUR', 45.56, '09-21-2009')
+    ];
+
+    this.account = new Account(123456, '../assets/images/mgidarccontentnick.comc008fa9d_d.0.jpg', transactionHistory);
+    this.customer = new Customer('Georgi', 'Tsanev', todos, suggestions,'+09841203948', 'cologneto@abv.bg');
   }
 }
