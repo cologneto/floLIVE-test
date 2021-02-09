@@ -2,7 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-app-main-right, app-customer {
+app-main-right, app-customer, app-account, app-main-left {
   min-width: 100%;
   height: auto;
 }

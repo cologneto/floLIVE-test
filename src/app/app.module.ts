@@ -4,7 +4,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
-import {RouterModule, Routes} from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { RouterModule, Routes} from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +18,11 @@ import { MainLeftComponent } from './main-left/main-left.component';
 import { MainRightComponent } from './main-right/main-right.component';
 import { AccountComponent } from './account/account.component';
 import { CustomerComponent } from './customer/customer.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ButtonToggleComponent } from './main-right/button.toggle/button.toggle.component';
+import { SupportFormComponent } from './account/support-form/support-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent},
@@ -31,6 +40,9 @@ const appRoutes: Routes = [
     MainRightComponent,
     AccountComponent,
     CustomerComponent,
+    ButtonToggleComponent,
+    SupportFormComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +50,12 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatToolbarModule,
     MatListModule,
-    RouterModule.forRoot(appRoutes)
+    MatButtonToggleModule,
+    MatTableModule,
+    MatFormFieldModule,
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

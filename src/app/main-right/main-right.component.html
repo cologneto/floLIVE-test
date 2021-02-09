@@ -1,7 +1,14 @@
-<div>
+<div *ngIf="suggestions">
   <mat-grid-list cols="3" rowHeight="16.55vh">
       <mat-grid-tile [rowspan]="1" [colspan]="1" *ngFor="let suggestion of suggestions">
         <img src="{{ suggestion }}" class="tile-image">
       </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div *ngIf="!suggestions">
+  <mat-grid-list cols="3" rowHeight="16.55vh">
+    <mat-grid-tile [rowspan]="1" [colspan]="1">
+      <app-button-toggle></app-button-toggle>
+    </mat-grid-tile>
   </mat-grid-list>
 </div>

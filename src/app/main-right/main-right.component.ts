@@ -11,5 +11,4 @@ export class MainRightComponent implements OnInit {
   @Input() suggestions: Array<string>;
   ngOnInit(): void {
   }
-
 }
