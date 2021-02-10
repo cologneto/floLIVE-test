@@ -7,6 +7,12 @@ app-main-right, app-customer, app-account, app-main-left {
   height: auto;
 }
 
+app-dynamic-form {
+  min-width: 90%;
+  margin: auto;
+  height: 100%;
+}
+
 app-sidebar {
   height: 100%;
   min-width: 100%;

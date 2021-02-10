@@ -8,7 +8,9 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterModule, Routes} from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -23,11 +25,15 @@ import { ButtonToggleComponent } from './main-right/button.toggle/button.toggle.
 import { SupportFormComponent } from './account/support-form/support-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ButtonReuseComponent } from './button-reuse/button-reuse.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent},
   { path: 'customer', component: CustomerComponent},
-  { path: 'account', component: AccountComponent}
+  { path: 'account', component: AccountComponent},
+  { path: 'form', component: DynamicFormComponent},
 ];
 
 @NgModule({
@@ -42,7 +48,8 @@ const appRoutes: Routes = [
     CustomerComponent,
     ButtonToggleComponent,
     SupportFormComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    ButtonReuseComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +63,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     MatInputModule,
+    MatRadioModule,
+    NgxMatFileInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
