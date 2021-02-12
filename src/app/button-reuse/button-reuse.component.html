@@ -1,1 +1,9 @@
-<p>button-reuse works!</p>
+<div>
+  <button
+    type="button"
+    [ngClass]="size"
+    mat-raised-button color="primary"
+    (click)="onClickButton()">
+    {{ size.toUpperCase() }}
+  </button>
+</div>
