@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -9,20 +9,46 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit{
-  dynamicForm: FormGroup;
+  dynamicFormIsSent: FormGroup;
+  dynamicFormNotSent: FormGroup;
+  fileUpload: FormControl;
   passControl: FormControl;
   isSent: boolean;
   isUrgent: boolean;
   passwords: string[] = ['321123', '321456', '321789'];
   filteredPasswords: Observable<string[]>;
 
+  private dateValidators = [];
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.dynamicForm = this.formBuilder.group({
-
+    this.dynamicFormIsSent = this.formBuilder.group({
+      fileUpload: [
+        undefined,
+        [Validators.required]
+      ],
+      dateInputIsSent: [
+        undefined,
+        [Validators.required]
+      ],
+      commentInputIsSent: ['']
     });
 
+    this.dynamicFormNotSent = this.formBuilder.group({
+      passwordInput: [
+        undefined,
+        [Validators.required]
+      ],
+      dateInputNotSent: [
+        undefined,
+        this.dateValidators
+      ],
+      urgentRadio: [
+        undefined,
+        [Validators.required]
+      ]
+    });
     this.passControl = new FormControl();
 
     this.filteredPasswords = this.passControl.valueChanges
@@ -30,6 +56,14 @@ export class DynamicFormComponent implements OnInit{
         startWith(''),
         map(value => this._filter(value))
       );
+    this.dynamicFormNotSent.get('urgentRadio').valueChanges
+      .subscribe(value => {
+        if ( value === 'urgent' ) {
+          this.dynamicFormNotSent.get('dateInputNotSent').setValidators([Validators.required]);
+        } else {
+          this.dynamicFormNotSent.get('dateInputNotSent').setValidators([]);
+        }
+      });
   }
 
   private _filter(value: string): string[] {
@@ -46,7 +80,24 @@ export class DynamicFormComponent implements OnInit{
     }
   }
 
+  onSubmitIsSent() {
+    if (this.dynamicFormIsSent.valid) {
+      alert('form sent submitted');
+    } else {
+      alert('Form sent not submitted');
+    }
+  }
+
+  onSubmitNotSent() {
+    if (this.dynamicFormNotSent.valid) {
+      alert('form not sent submitted');
+    } else {
+      alert('Form "not sent" not submitted');
+    }
+  }
+
   onUrgentChange(e) {
+    console.log(e);
     if (e.value === 'urgent') {
       this.isUrgent = true;
     } else {

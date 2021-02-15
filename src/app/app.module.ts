@@ -29,6 +29,7 @@ import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ButtonReuseComponent } from './button-reuse/button-reuse.component';
+import {MatIconModule} from '@angular/material/icon';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent},
@@ -70,6 +71,7 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatAutocompleteModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

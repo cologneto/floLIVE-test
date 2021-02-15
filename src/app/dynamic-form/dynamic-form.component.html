@@ -1,36 +1,42 @@
+<div>
+  <mat-radio-group (change)="onSendChange($event)">
+    <mat-radio-button value="sent">Already sent</mat-radio-button>
+    <mat-radio-button value="not sent">Not sent yet</mat-radio-button>
+  </mat-radio-group>
+</div>
 <form>
-  <div>
-    <mat-radio-group (change)="onSendChange($event)">
-      <mat-radio-button value="sent">Already sent</mat-radio-button>
-      <mat-radio-button value="not sent">Not sent yet</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div *ngIf="isSent !== undefined && isSent">
+  <div *ngIf="isSent !== undefined && isSent" [formGroup]="dynamicFormIsSent">
     <div>
-      Upload file:
       <mat-form-field>
-        <ngx-mat-file-input>
-        </ngx-mat-file-input>
+        <ngx-mat-file-input formControlName="fileUpload" placeholder="Required input" valuePlaceholder="No file selected" required></ngx-mat-file-input>
+        <mat-icon matSuffix>folder</mat-icon>
+        <mat-error *ngIf="dynamicFormIsSent.get('fileUpload').hasError('required')">
+          Please select a file
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
-      Pick a date
       <mat-form-field appearance="fill">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" formControlName="dateInputIsSent">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="dynamicFormIsSent.get('dateInputIsSent').hasError('required')">
+          Please select a date
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" >
         <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput formControlName="commentInputIsSent"></textarea>
       </mat-form-field>
     </div>
+    <div><app-button-reuse [size]="'medium'" (click)="onSubmitIsSent()"></app-button-reuse></div>
   </div>
-
-  <div *ngIf="isSent !== undefined && !isSent">
+</form>
+<form>
+  <div *ngIf="isSent !== undefined && !isSent" [formGroup]="dynamicFormNotSent">
     <div>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
@@ -38,6 +44,7 @@
                placeholder="Pick one"
                aria-label="Password"
                matInput
+               formControlName="passwordInput"
                [formControl]="passControl"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
@@ -45,27 +52,29 @@
             {{option}}
           </mat-option>
         </mat-autocomplete>
+        <mat-error *ngIf="dynamicFormNotSent.get('passwordInput').hasError('required')">
+          Please enter a password!
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
-      <mat-radio-group (change)="onUrgentChange($event)">
-        <mat-radio-button value="urgent">Urgent</mat-radio-button>
+      <mat-radio-group (change)="onUrgentChange($event)" formControlName="urgentRadio">
+        <mat-radio-button value="urgent" [ngStyle]="{}">Urgent</mat-radio-button>
         <mat-radio-button value="not urgent">Not Urgent</mat-radio-button>
       </mat-radio-group>
     </div>
     <div *ngIf="isUrgent !== undefined && isUrgent">
       <div>
-        Pick a date
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input matInput [matDatepicker]="picker" formControlName="dateInputNotSent">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
+    <div><app-button-reuse [size]="'medium'" (click)="onSubmitNotSent()"></app-button-reuse></div>
   </div>
-  <div><app-button-reuse [size]="'medium'"></app-button-reuse></div>
 </form>
 
 
