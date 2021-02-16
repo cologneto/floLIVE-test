@@ -16,7 +16,7 @@ describe('ButtonReuseComponent', () => {
     component.size = 'MEDIUM';
   });
 
-  it('should display original title', () => {
+  it('should display passed size in the text content', () => {
     fixture.detectChanges();
     expect(btn.textContent).toContain(component.size);
   });
@@ -25,7 +25,7 @@ describe('ButtonReuseComponent', () => {
     const size = 'medium';
     component.size = size;
     fixture.detectChanges();
-    component.click.subscribe((selectedSize: string) => expect(selectedSize).toBe(size));
+    component.clicked.subscribe((selectedSize: string) => expect(selectedSize).toBe(size));
     component.onClickButton();
   });
 });

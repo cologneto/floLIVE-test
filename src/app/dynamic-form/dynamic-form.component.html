@@ -9,7 +9,6 @@
     <div>
       <mat-form-field>
         <ngx-mat-file-input formControlName="fileUpload" placeholder="Required input" valuePlaceholder="No file selected" required></ngx-mat-file-input>
-        <mat-icon matSuffix>folder</mat-icon>
         <mat-error *ngIf="dynamicFormIsSent.get('fileUpload').hasError('required')">
           Please select a file
         </mat-error>
@@ -32,7 +31,7 @@
         <textarea matInput formControlName="commentInputIsSent"></textarea>
       </mat-form-field>
     </div>
-    <div><app-button-reuse [size]="'medium'" (click)="onSubmitIsSent()"></app-button-reuse></div>
+    <div><app-button-reuse [size]="'medium'" (clicked)="onSubmitIsSent()"></app-button-reuse></div>
   </div>
 </form>
 <form>
@@ -73,7 +72,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div><app-button-reuse [size]="'medium'" (click)="onSubmitNotSent()"></app-button-reuse></div>
+    <div><app-button-reuse [size]="'medium'" (clicked)="onSubmitNotSent()"></app-button-reuse></div>
   </div>
 </form>
 

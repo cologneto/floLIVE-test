@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,18 +6,13 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './button-reuse.component.html',
   styleUrls: ['./button-reuse.component.css']
 })
-export class ButtonReuseComponent implements OnInit {
+export class ButtonReuseComponent {
   @Input() size: string;
   @Input() label: string;
-  @Output() click: EventEmitter<string> = new EventEmitter();
+  @Output() clicked: EventEmitter<string> = new EventEmitter();
 
-  // tslint:disable-next-line:typedef
-  onClickButton()  {
-    this.click.emit(this.size);
+  onClickButton(): void  {
+    this.clicked.emit(this.size);
   }
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

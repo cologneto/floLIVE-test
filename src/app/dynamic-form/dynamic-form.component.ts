@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ export class DynamicFormComponent implements OnInit{
 
   constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dynamicFormIsSent = this.formBuilder.group({
       fileUpload: [
         undefined,
@@ -72,7 +72,7 @@ export class DynamicFormComponent implements OnInit{
     return this.passwords.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  onSendChange(e) {
+  onSendChange(e): void {
     if (e.value === 'sent') {
       this.isSent = true;
     } else {
@@ -80,7 +80,7 @@ export class DynamicFormComponent implements OnInit{
     }
   }
 
-  onSubmitIsSent() {
+  onSubmitIsSent(): void {
     if (this.dynamicFormIsSent.valid) {
       alert('form sent submitted');
     } else {
@@ -88,7 +88,7 @@ export class DynamicFormComponent implements OnInit{
     }
   }
 
-  onSubmitNotSent() {
+  onSubmitNotSent(): void {
     if (this.dynamicFormNotSent.valid) {
       alert('form not sent submitted');
     } else {
@@ -96,7 +96,7 @@ export class DynamicFormComponent implements OnInit{
     }
   }
 
-  onUrgentChange(e) {
+  onUrgentChange(e): void {
     console.log(e);
     if (e.value === 'urgent') {
       this.isUrgent = true;

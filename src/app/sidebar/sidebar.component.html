@@ -5,18 +5,18 @@
 
 </mat-toolbar>
 <mat-nav-list>
-  <a routerLink="/customer" mat-list-item>
-    <div mat-line>
+  <a [routerLink]="'/customer'" mat-list-item>
+    <div mat-line routerLinkActive="active">
       Customer details
     </div>
   </a>
-  <a routerLink="/account" mat-list-item>
-    <div mat-line>
+  <a [routerLink]="'/account'"  mat-list-item>
+    <div mat-line routerLinkActive="active">
       Account details
     </div>
   </a>
-  <a routerLink="/form" mat-list-item>
-    <div mat-line>
+  <a [routerLink]="'/form'"  mat-list-item>
+    <div mat-line routerLinkActive="active">
       Dynamic Form
     </div>
   </a>

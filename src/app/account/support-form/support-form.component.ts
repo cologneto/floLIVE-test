@@ -9,14 +9,32 @@ import {FormControl, Validators} from '@angular/forms';
 export class SupportFormComponent {
 
   email = new FormControl('', [Validators.required, Validators.email]);
+  textArea = new FormControl('', [Validators.required]);
 
-  // tslint:disable-next-line:typedef
-  getErrorMessage() {
+  getErrorMessageMail(): string {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter an email';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  getErrorMessageText(): string {
+    if (this.textArea.hasError('required')) {
+      return 'You must enter a text';
+    }
+
+    return this.textArea.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  onSubmit(): void {
+    if (this.email.valid && this.textArea.valid) {
+      this.email.setValue('');
+      this.textArea.setValue('');
+      alert('Form submitted');
+    } else {
+      alert('Form not submitted');
+    }
   }
 
 }
